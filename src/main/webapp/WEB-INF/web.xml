@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>HOS_Micro Services</display-name>
+
+
+	<servlet>
+		<display-name>Startup</display-name>
+		<servlet-name>Startup</servlet-name>
+		<servlet-class>com.bct.HOS.servlet.Startup</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<display-name>ReportGen</display-name>
+		<servlet-name>ReportGen</servlet-name>
+		<servlet-class>com.bct.HOS.servlet.ReportGen</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>ReportGen</servlet-name>
+		<url-pattern>/ReportGen</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Startup</servlet-name>
+		<url-pattern>/Startup</url-pattern>
+	</servlet-mapping>
+
+	<!-- 
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	 -->
+	
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+
+
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowed.origins</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.methods</param-name>
+			<param-value>GET,POST,HEAD,OPTIONS,PUT</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>token,Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.exposed.headers</param-name>
+			<param-value>Access-Control-Allow-Origin,Access-Control-Allow-Credentials</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.support.credentials</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.preflight.maxage</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- <filter> <filter-name>Remote Address Filter</filter-name> <filter-class>org.apache.catalina.filters.RemoteAddrFilter</filter-class> 
+		<init-param> <param-name>allow</param-name> <param-value>172.31.59.225,127.0.0.1</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>Remote Address Filter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+	<!-- <servlet> <servlet-name>Resteasy</servlet-name> <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class> 
+		<init-param> <param-name>javax.ws.rs.Application</param-name> <param-value>com.bct.HOS.App.App</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>Resteasy</servlet-name> 
+		<url-pattern>/*</url-pattern> </servlet-mapping> <servlet> <servlet-name>resteasy-application1</servlet-name> 
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class> 
+		<init-param> <param-name>javax.ws.rs.Application</param-name> <param-value>com.bct.HOS.App.App</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>resteasy-application1</servlet-name> 
+		<url-pattern>/rest/usrapp/*</url-pattern> </servlet-mapping> <servlet> <servlet-name>resteasy-application2</servlet-name> 
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class> 
+		<init-param> <param-name>javax.ws.rs.Application</param-name> <param-value>com.bct.HOS.App.UsrApp</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>resteasy-application2</servlet-name> 
+		<url-pattern>/rest/cxoapp/*</url-pattern> </servlet-mapping> -->
+
+	<context-param>
+		<param-name>authKey</param-name>
+		<param-value>64cd56f485a105f923b54b9ad0d7cb6ef3f4c228</param-value>
+	</context-param>
+
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+
+
+</web-app>
